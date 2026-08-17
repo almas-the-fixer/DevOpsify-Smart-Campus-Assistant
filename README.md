@@ -1,3 +1,11 @@
+# Credits
+
+- Base application architecture and features developed by Harshrajsinh Vaghela GH Link: https://github.com/harshrajsinhvaghela7586
+- Original Repo: https://github.com/harshrajsinhvaghela7586/Smart-Campus-Assistant-MERN.
+- This repository contains the complete DevOps, containerization, and CI/CD implementation by Me (Almas Bhisti).
+
+> I thank Harshrajsinh Again for letting me Work on top of his Work!!
+
 # Smart Campus Assistant - MERN Stack
 
 ![MERN Stack](https://img.shields.io/badge/Stack-MERN-blue)
