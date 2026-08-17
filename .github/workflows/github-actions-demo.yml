@@ -1,0 +1,12 @@
+name: github-actions-demo
+run-name: ${{ github.actor }} is testing out Github Actions!!!
+
+on: [push]
+jobs:
+    Explore-GitHub-Actions:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "Hello World From github actions.."
+            - run: echo "This Job Was triggered by ${{ github.event_name }} event!!!"
+            - run: echo "This Job is Running on ${{ runner.os }} Server on GitHub!!!"
+            - run: echo "The name of the branch is ${{ github.ref }} and the repository is ${{ github.repository }} !!!"
