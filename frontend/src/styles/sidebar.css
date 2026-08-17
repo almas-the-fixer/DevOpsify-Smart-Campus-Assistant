@@ -1,0 +1,191 @@
+:root {
+    --side-bg: #203871; /* Deep Navy */
+    --side-active: #3b82f6; /* Electric Blue */
+    --side-hover: rgba(255, 255, 255, 0.08);
+    --side-text: #94a3b8;
+    --side-white: #ffffff;
+    --side-width: 280px;
+    --side-collapsed-width: 88px;
+}
+
+.sidebar-v2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: var(--side-width);
+    background: var(--side-bg);
+    display: flex;
+    flex-direction: column;
+    padding: 24px 16px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-v2.collapsed {
+    width: var(--side-collapsed-width);
+}
+
+/* --- BRANDING --- */
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 8px;
+    margin-bottom: 20px;
+}
+
+.brand-logo {
+    min-width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--side-active), #1d4ed8);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-name {
+    color: var(--side-white);
+    font-weight: 700;
+    font-size: 18px;
+    white-space: nowrap;
+}
+
+.brand-tagline {
+    color: var(--side-text);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.sidebar-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.05);
+    margin: 10px 0 25px 0;
+}
+
+/* --- NAV ITEMS --- */
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 14px;
+    border-radius: 12px;
+    color: var(--side-text);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-icon-box {
+    min-width: 24px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+}
+
+.nav-text {
+    font-weight: 500;
+    font-size: 15px;
+    white-space: nowrap;
+}
+
+.nav-arrow {
+    margin-left: auto;
+    font-size: 14px;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+/* Hover & Active States */
+.nav-item:hover {
+    background: var(--side-hover);
+    color: var(--side-white);
+}
+
+.nav-item:hover .nav-arrow {
+    opacity: 0.5;
+    transform: translateX(3px);
+}
+
+.nav-item.active {
+    background: var(--side-active);
+    color: var(--side-white);
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+}
+
+.nav-item.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    height: 60%;
+    width: 4px;
+    background: white;
+    border-radius: 0 4px 4px 0;
+}
+
+/* --- FOOTER / LOGOUT --- */
+.sidebar-footer {
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.logout-action {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    padding: 14px;
+    background: rgba(239, 68, 68, 0.05);
+    border: 1px solid rgba(239, 68, 68, 0.1);
+    border-radius: 14px;
+    color: #ef4444;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.logout-action:hover {
+    background: #ef4444;
+    color: white;
+}
+
+.logout-icon-box {
+    margin-right: 15px;
+    font-size: 20px;
+    display: flex;
+}
+
+/* --- COLLAPSED STATE ADJUSTMENTS --- */
+.sidebar-v2.collapsed .nav-icon-box,
+.sidebar-v2.collapsed .logout-icon-box {
+    margin-right: 0;
+}
+
+.sidebar-v2.collapsed .nav-item {
+    justify-content: center;
+}
+
+.sidebar-v2.collapsed .brand-logo {
+    margin: 0 auto;
+}
+
+/* Sidebar behavior for main content */
+/* Iske liye aapko apne Layout component mein margin set karna hoga based on 'collapsed' prop */

@@ -1,0 +1,701 @@
+/* --- VARIABLES (Matching Dashboard) --- */
+:root {
+  --mu-primary: #4361ee;
+  --mu-success: #06d6a0;
+  --mu-danger: #f72585;
+  --mu-warning: #ff9f1c;
+  --mu-bg: #f8fafc;
+  --mu-card: #ffffff;
+  --mu-text: #1e293b;
+  --mu-muted: #64748b;
+  --mu-border: #f1f5f9;
+  --mu-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04);
+}
+
+.manage-users-wrapper {
+  background: var(--mu-bg);
+  min-height: 100vh;
+  padding: 40px 24px;
+}
+
+
+.mu-container {
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+/* --- HEADER --- */
+.mu-header-v2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 35px;
+}
+
+.mu-header-info h1 {
+  font-size: 38px;
+  font-weight: 800;
+  margin-bottom: 5px;
+}
+
+.mu-add-btn-v2 {
+  background: var(--mu-primary);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px -6px rgba(67, 97, 238, 0.4);
+  transition: 0.3s;
+}
+
+.mu-add-btn-v2:hover { transform: translateY(-2px); filter: brightness(1.1); }
+
+/* --- TOOLBAR --- */
+.mu-toolbar-v2 {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.mu-search-box {
+  flex: 1;
+  background: var(--mu-card);
+  border: 1px solid var(--mu-border);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  box-shadow: var(--mu-shadow);
+}
+
+.mu-search-box input {
+  border: none;
+  padding: 12px;
+  width: 100%;
+  outline: none;
+  font-size: 15px;
+  color: var(--mu-text);
+}
+
+.search-icon { color: var(--mu-muted); }
+
+.mu-filter-trigger {
+  background: var(--mu-card);
+  border: 1px solid var(--mu-border);
+  padding: 0 20px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: var(--mu-text);
+  cursor: pointer;
+  box-shadow: var(--mu-shadow);
+  position: relative;
+}
+
+.filter-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--mu-primary);
+  border-radius: 50%;
+}
+
+/* --- DROPDOWN --- */
+.mu-dropdown-card {
+  position: absolute;
+  top: 110%;
+  right: 0;
+  width: 280px;
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+  border: 1px solid var(--mu-border);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, var(--primary), var(--success));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.mu-dropdown-item label { font-size: 12px; font-weight: 700; color: var(--mu-muted); text-transform: uppercase; }
+
+.select-wrapper { position: relative; }
+.mu-dropdown-item select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--mu-border);
+  appearance: none;
+  font-weight: 500;
+  outline: none;
+}
+.select-arrow { position: absolute; right: 10px; top: 35%; color: var(--mu-muted); pointer-events: none; }
+
+.mu-reset-v2 { background: #f1f5f9; border: none; padding: 10px; border-radius: 8px; font-weight: 600; cursor: pointer; }
+
+/* --- TABLE --- */
+/* ROLE DROPDOWN IMPROVED */
+
+.mu-role-dropdown-v2{
+appearance:none;
+background:#f8fafc;
+border:1px solid #e2e8f0;
+padding:6px 28px 6px 10px;
+border-radius:10px;
+font-size:13px;
+font-weight:600;
+cursor:pointer;
+transition:all .25s ease;
+
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+background-repeat:no-repeat;
+background-position:right 6px center;
+background-size:14px;
+}
+
+.mu-role-dropdown-v2:hover{
+background:#ffffff;
+border-color:#cbd5f5;
+}
+
+.mu-role-dropdown-v2:focus{
+outline:none;
+border-color:#6366f1;
+box-shadow:0 0 0 2px rgba(99,102,241,0.15);
+}
+
+/* ROLE COLORS */
+
+.mu-role-dropdown-v2.student{
+color:#2563eb;
+}
+
+.mu-role-dropdown-v2.teacher{
+color:#7c3aed;
+}
+
+
+/* BATCH DROPDOWN IMPROVED */
+
+.batch-dropdown-v3{
+appearance:none;
+background:#f8fafc;
+border:1px solid #e2e8f0;
+padding:6px 28px 6px 10px;
+border-radius:10px;
+font-size:12px;
+font-weight:700;
+letter-spacing:.5px;
+cursor:pointer;
+transition:all .25s ease;
+
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+background-repeat:no-repeat;
+background-position:right 6px center;
+background-size:14px;
+}
+
+.batch-dropdown-v3:hover{
+background:#fff;
+border-color:#cbd5f5;
+}
+
+.batch-dropdown-v3:focus{
+outline:none;
+border-color:#6366f1;
+box-shadow:0 0 0 2px rgba(99,102,241,0.15);
+}
+
+/* BATCH COLORS */
+
+.batch-dropdown-v3.NORMAL{
+color:#059669;
+width: auto;
+}
+
+.batch-dropdown-v3.OJT{
+color:#7c3aed;
+width: auto;
+}
+
+.mu-modern-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.mu-modern-table th {
+  background: #f8fafc;
+  padding: 18px 24px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--mu-muted);
+  text-transform: uppercase;
+}
+
+.mu-modern-table td { padding: 18px 24px; border-bottom: 1px solid var(--mu-border); }
+
+.user-profile-cell { display: flex; align-items: center; gap: 15px; }
+.user-avatar {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: var(--mu-primary); color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 18px;
+}
+
+.user-name { display: block; font-weight: 700; color: var(--mu-text); }
+.user-email { font-size: 13px; color: var(--mu-muted); }
+
+/* Status & Role Badges */
+.status-pill {
+  padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700;
+}
+.status-pill.active { background: rgba(6, 214, 160, 0.1); color: var(--mu-success); }
+.status-pill.blocked { background: rgba(247, 37, 133, 0.1); color: var(--mu-danger); }
+
+.role-badge {
+  padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 800; text-transform: uppercase;
+}
+.role-badge.teacher { background: #e0e7ff; color: #4338ca; }
+.role-badge.student { background: #fef3c7; color: #92400e; }
+
+/* --- ACTIONS --- */
+.mu-action-group { display: flex; gap: 8px; justify-content: flex-end; }
+.act-btn {
+  width: 36px; height: 36px; border-radius: 10px; border: none;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: 0.2s;
+}
+
+.act-btn.reset { background: #eff6ff; color: var(--mu-primary); }
+.act-btn.block { background: #fff7ed; color: var(--mu-warning); }
+.act-btn.unblock { background: #f0fdf4; color: var(--mu-success); }
+.act-btn.delete { background: #fff1f2; color: var(--mu-danger); }
+
+.act-btn:hover { transform: scale(1.1); }
+
+/* --- MODAL --- */
+.mu-modal-overlay {
+  position: fixed; inset: 0; background: rgba(15, 23, 42, 0.6);
+  display: flex; align-items: center; justify-content: center; z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.mu-modal-v2 {
+  background: white; padding: 40px; border-radius: 24px; width: 400px;
+  text-align: center; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.2);
+}
+
+.modal-icon {
+  width: 60px; height: 60px; background: #fff1f2; color: var(--mu-danger);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px; font-size: 24px;
+}
+
+.modal-btns { display: flex; gap: 12px; margin-top: 30px; }
+.modal-btns button { flex: 1; padding: 12px; border-radius: 10px; border: none; font-weight: 700; cursor: pointer; }
+.m-btn-cancel { background: #f1f5f9; color: var(--mu-muted); }
+.m-btn-confirm.btn-delete { background: var(--mu-danger); color: white; }
+.m-btn-confirm.btn-block { background: var(--mu-warning); color: white; }
+.m-btn-confirm.btn-reset { background: var(--mu-primary); color: white; }
+
+
+/* ... (existing root variables same rahenge) */
+
+.mu-filter-wrapper {
+  position: relative; /* Sabse important dropdown open hone ke liye */
+  display: inline-block;
+}
+
+.mu-filter-trigger {
+  background: var(--mu-card);
+  border: 1px solid var(--mu-border);
+  height: 100%; /* Search box ki height match karne ke liye */
+  padding: 0 20px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: var(--mu-text);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--mu-shadow);
+}
+
+.mu-filter-trigger.active {
+  border-color: var(--mu-primary);
+  color: var(--mu-primary);
+  background: #f0f4ff;
+}
+
+/* Dropdown Card Fix */
+.mu-dropdown-card {
+  position: absolute;
+  top: calc(100% + 10px); /* Thoda niche */
+  right: 0;
+  width: 280px;
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15); /* Deep shadow */
+  border: 1px solid var(--mu-border);
+  z-index: 999; /* Taaki table ke upar dikhe */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  animation: slideIn 0.2s ease-out;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Teacher Dashboard Dash Style */
+.text-muted-dash {
+  color: var(--mu-muted);
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+/* Baaki ka CSS pehle wala hi use karein... */
+/* Table Role Dropdown Styles */
+.role-select-wrapper {
+  position: relative;
+  width: fit-content;
+}
+
+.mu-role-dropdown {
+  appearance: none;
+  padding: 6px 30px 6px 12px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+/* Student Style in Table */
+.mu-role-dropdown.student {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+/* Teacher Style in Table */
+.mu-role-dropdown.teacher {
+  background: #e0e7ff;
+  color: #4338ca;
+}
+
+.mu-role-dropdown:hover {
+  filter: brightness(0.95);
+  border-color: rgba(0,0,0,0.1);
+}
+
+.role-select-arrow {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+/* Spinner for Loading */
+.loading-spin {
+  animation: mu-spin 1s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes mu-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Batch Info Column Styles */
+.mu-batch-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.info-sub {
+  font-size: 11px;
+  color: var(--mu-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.batch-select-wrapper {
+  position: relative;
+  width: fit-content;
+}
+
+.mu-batch-dropdown {
+  appearance: none;
+  padding: 4px 24px 4px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  border: 1px solid var(--mu-border);
+  cursor: pointer;
+  background: white;
+  transition: all 0.2s;
+  outline: none;
+}
+
+/* Color coding for Batch Types */
+.mu-batch-dropdown.NORMAL {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.mu-batch-dropdown.OJT {
+  background: #ecfdf5;
+  color: #059669;
+  border-color: #d1fae5;
+}
+
+.mu-batch-dropdown:focus {
+  border-color: var(--mu-primary);
+}
+
+.batch-select-arrow {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 10px;
+  opacity: 0.5;
+}
+
+/* User Info Cell Hover Effect */
+.mu-modern-table tr:hover {
+  background-color: #fcfdfe;
+}
+
+.mu-modern-table tr:hover .user-avatar {
+  transform: scale(1.05);
+  transition: 0.2s;
+}
+/* --- BATCH DROPDOWN V2 --- */
+.batch-switch-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: 4px;
+}
+
+.batch-dropdown-v2 {
+    appearance: none;
+    padding: 6px 12px 6px 28px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+    width: 100px;
+}
+
+/* NORMAL Status Style */
+.batch-dropdown-v2.NORMAL {
+    background: #f1f5f9;
+    color: #475569;
+    border-color: #e2e8f0;
+}
+
+/* OJT Status Style */
+.batch-dropdown-v2.OJT {
+    background: #ecfdf5;
+    color: #059669;
+    border-color: #d1fae5;
+    box-shadow: 0 2px 4px rgba(5, 150, 105, 0.1);
+}
+
+.batch-dropdown-v2:hover {
+    filter: brightness(0.95);
+    transform: translateY(-1px);
+}
+
+.batch-icon {
+    position: absolute;
+    left: 8px;
+    font-size: 12px;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+/* --- DIV / ROLL BOX --- */
+.div-roll-box {
+    background: #fff;
+    border: 1px solid var(--mu-border);
+    padding: 6px 12px;
+    border-radius: 8px;
+    display: inline-block;
+    font-size: 13px;
+    color: var(--mu-text);
+}
+
+.div-roll-box .divider {
+    color: #cbd5e1;
+    margin: 0 4px;
+}
+
+/* --- MODAL UPDATES --- */
+.modal-icon.icon-reset { background: #eff6ff; color: var(--mu-primary); }
+.modal-icon.icon-block { background: #fff7ed; color: var(--mu-warning); }
+.modal-icon.icon-delete { background: #fff1f2; color: var(--mu-danger); }
+
+/* --- ROW HOVER --- */
+.mu-modern-table tbody tr {
+    transition: background 0.2s;
+}
+
+.mu-modern-table tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+.row-blocked {
+    opacity: 0.7;
+    background-color: #fdf2f2 !important;
+}
+/* Filter Styling */
+.mu-dropdown-item {
+    transition: opacity 0.3s ease;
+}
+
+.mu-dropdown-item.is-disabled {
+    opacity: 0.4;
+    pointer-events: none;
+    filter: grayscale(1);
+}
+
+.mu-dropdown-item label {
+    display: block;
+    margin-bottom: -0px;
+    color: var(--mu-muted);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* Empty State */
+.mu-empty-state {
+    padding: 60px;
+    text-align: center;
+    color: var(--mu-muted);
+    font-weight: 500;
+    font-style: italic;
+}
+
+/* Table Card Update */
+.mu-table-card-v2 {
+    min-height: 400px;
+}
+
+/* Row transition */
+.mu-modern-table tbody tr {
+    animation: fadeInRow 0.3s ease forwards;
+}
+
+@keyframes fadeInRow {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* Baaki ka purana CSS jo aapke paas hai... */
+
+/* Remove default select arrow */
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+.mu-pagination{
+display:flex;
+justify-content:center;
+gap:8px;
+margin-top:20px;
+}
+
+.mu-pagination button{
+padding:6px 12px;
+border-radius:8px;
+border:1px solid #e2e8f0;
+background:white;
+cursor:pointer;
+font-weight:600;
+}
+
+.mu-pagination button.active{
+background:#4361ee;
+color:white;
+border-color:#4361ee;
+}
+
+.mu-pagination button:disabled{
+opacity:0.4;
+cursor:not-allowed;
+}
+
+.mu-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  border-top: 1px solid #eee;
+}
+
+.pag-btn {
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.pag-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pag-btn:not(:disabled):hover {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.pag-info {
+  font-size: 0.9rem;
+  color: #666;
+}

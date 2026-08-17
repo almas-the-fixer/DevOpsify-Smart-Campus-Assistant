@@ -1,0 +1,65 @@
+/* TOOLBAR */
+
+.attendance-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.sub-info {
+  font-size: 14px;
+  color: #64748b;
+  margin-left: 8px;
+  font-weight: 500;
+}
+
+
+/* TOOL BUTTON */
+
+.tool-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  margin-left: 6px;
+  cursor: pointer;
+}
+
+.tool-btn.light {
+  background: #e0e7ff;
+  color: #1e40af;
+}
+
+.tool-btn:hover {
+  opacity: 0.9;
+}
+
+
+/* SUBMIT */
+
+.submit-bar {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg,#16a34a,#15803d);
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  box-shadow: 0 6px 16px rgba(22,163,74,0.4);
+}
+
+.submit-btn:disabled {
+  background: #a7f3d0;
+  cursor: not-allowed;
+}

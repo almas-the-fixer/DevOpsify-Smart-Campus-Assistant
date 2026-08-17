@@ -1,0 +1,242 @@
+/* add-user.css */
+:root {
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --bg-surface: #ffffff;
+  --bg-body: #f8fafc;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --error: #ef4444;
+  --radius-lg: 12px;
+  --radius-md: 8px;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+.add-user-page {
+  min-height: 100vh;
+  background-color: var(--bg-body);
+  background-image: radial-gradient(at 0% 0%, rgba(79, 70, 229, 0.05) 0px, transparent 50%),
+                    radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.05) 0px, transparent 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.form-card {
+  background: var(--bg-surface);
+  width: 100%;
+  max-width: 850px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.form-header {
+  padding: 2.5rem 3rem 1.5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.form-header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.form-header p {
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.form-body {
+  padding: 2.5rem 3rem;
+}
+/* Role Selector - Centered Version */
+.role-tabs {
+  display: flex; /* inline-flex ki jagah flex use karein */
+  width: fit-content; /* Jitna content hai utni hi width lega */
+  margin: 0 auto 2.5rem auto; /* Top: 0, Right/Left: auto (center karne ke liye), Bottom: 2.5rem */
+  background: #f1f5f9;
+  padding: 0.35rem;
+  border-radius: var(--radius-md);
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  font-weight: 900;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  color: #2563eb; /* Primary color */
+  transform: translateX(-5px); /* Left ki taraf halka sa slide */
+}
+
+.back-btn span {
+  font-size: 1.7rem;
+}
+
+.tab-trigger {
+  padding: 0.6rem 2rem;
+  border: none;
+  background: none;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: calc(var(--radius-md) - 2px);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tab-trigger.active {
+  background: white;
+  color: var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Grid System */
+.input-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-control label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.form-control input,
+.form-control select {
+  height: 44px;
+  padding: 0 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  color: var(--text-main);
+  transition: all 0.2s;
+  background-color: #fff;
+}
+
+.form-control input:focus,
+.form-control select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.form-control input:disabled {
+  background-color: #f8fafc;
+  color: var(--text-muted);
+  font-weight: 600;
+  cursor: not-allowed;
+}
+
+/* Multi-select Subjects */
+.subjects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 0.75rem;
+  padding: 1rem;
+  background: #f8fafc;
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--border-color);
+}
+
+.subject-tag {
+  cursor: pointer;
+  position: relative;
+}
+
+.subject-tag input {
+  position: absolute;
+  opacity: 0;
+}
+
+.subject-label {
+  display: block;
+  text-align: center;
+  padding: 0.5rem;
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: all 0.2s;
+}
+
+.subject-tag input:checked + .subject-label {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+/* Footer Actions */
+.form-footer {
+  padding: 2rem 3rem 3rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-bottom:-40px;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  padding: 0.75rem 2.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.error-hint {
+  color: var(--error);
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 768px) {
+  .input-grid { grid-template-columns: 1fr; }
+  .form-card { border-radius: 0; }
+  .add-user-page { padding: 0; }
+}

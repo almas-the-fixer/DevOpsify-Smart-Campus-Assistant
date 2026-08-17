@@ -1,0 +1,80 @@
+.student-attendance-page {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.attendance-header {
+  background: white;
+  padding: 22px 26px;
+  border-radius: 18px;
+  margin-bottom: 26px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* Grid */
+.attendance-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.attendance-card {
+  background: white;
+  padding: 22px;
+  position: relative;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.attendance-card p {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* Progress */
+.progress {
+  background: #e5e7eb;
+  height: 8px;
+  border-radius: 8px;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.progress div {
+  height: 100%;
+  background: var(--primary);
+}
+
+/* Percentage */
+.percentage {
+  font-weight: 600;
+}
+
+.good { color: #15803d; }
+.warn { color: #ca8a04; }
+.danger { color: #b91c1c; }
+
+
+
+
+.attendance-card::after {
+  content: "";
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+.attendance-card .good::after {
+  background: #16a34a;
+}
+.attendance-card .warn::after {
+  background: #f59e0b;
+}
+.attendance-card .danger::after {
+  background: #dc2626;
+}
+

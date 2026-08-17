@@ -1,0 +1,96 @@
+/* today-lectures-page */
+
+.today-lectures-page h2 {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #1e293b;
+}
+
+
+/* TABLE CARD */
+
+.table-card {
+  background: white;
+  border-radius: 16px;
+  padding: 18px 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  overflow-x: auto;
+}
+
+
+/* TABLE */
+
+.attendance-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+
+/* HEAD */
+
+.attendance-table thead {
+  background: #f1f5ff;
+}
+
+.attendance-table th {
+  text-align: left;
+  padding: 14px 12px;
+  color: #1e40af;
+  font-weight: 600;
+}
+
+
+/* ROW */
+
+.attendance-table td {
+  padding: 13px 12px;
+  border-bottom: 1px solid #e5e7eb;
+  color: #334155;
+}
+
+.attendance-table tr:hover td {
+  background: #f8fafc;
+}
+
+
+/* EMPTY */
+
+.empty {
+  text-align: center;
+  padding: 25px;
+  color: #64748b;
+}
+
+
+/* BUTTON */
+
+.take-btn {
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(135deg,#2563eb,#1e40af);
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.take-btn:hover {
+  box-shadow: 0 6px 14px rgba(37,99,235,0.4);
+  transform: translateY(-1px);
+}
+
+
+/* DISABLED */
+
+.take-btn.disabled,
+.take-btn:disabled {
+  background: #cbd5f5;
+  color: #475569;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}

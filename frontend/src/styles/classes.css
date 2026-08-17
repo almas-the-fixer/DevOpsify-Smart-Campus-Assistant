@@ -1,0 +1,215 @@
+/* MAIN */
+.classes-container {
+  max-width: 1300px;
+  margin: auto;
+  padding: 30px;
+  background: #f8fafc;
+}
+
+
+/* HEADER */
+.classes-header {
+  margin-bottom: 25px;
+}
+
+.classes-header h1 {
+  margin-top: auto;
+  font-size: 32px;
+}
+
+.classes-header p {
+  color: #64748b;
+}
+
+
+.filter-card input {
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+}
+
+.filter-card button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+
+/* TABLE CARD */
+.table-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+
+/* TABLE */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  background: #f1f5f9;
+  padding: 12px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.table td {
+  padding: 11px;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 14px;
+}
+
+.table tr:hover {
+  background: #f8fafc;
+}
+
+
+/* SUBJECT */
+.subject-cell {
+  font-weight: 600;
+  color: #1e40af;
+}
+
+
+/* ROOM */
+.room-badge {
+  background: #dbeafe;
+  color: #1d4ed8;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+
+/* RESET BUTTON - PREMIUM */
+/* FILTER CARD - IMPROVED */
+.filter-card {
+  display: flex; /* Grid se Flexbox kiya taaki sizes control ho sakein */
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  padding: 15px 20px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border: 1px solid #e2e8f0;
+}
+
+/* Inputs aur Selects ko thoda sleek banaya */
+.filter-card select {
+  flex: 1; /* Ye desktop par expand honge */
+  min-width: 140px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+  background-color: #f8fafc;
+  color: #334155;
+  outline: none;
+  transition: border 0.2s;
+}
+
+/* RESET BUTTON - Fixed Size & Professional Look */
+.reset-btn {
+  display: inline-flex;
+  align-items: center;
+  margin-top:-7px;
+  justify-content: center;
+  padding: 6px 20px; /* Padding kam ki taaki button sleek lage */
+  height: 23px; /* Select box ke height se match kiya */
+  
+  background: #0c6ccc; /* Soft gray background (Premium look) */
+  color: #315c99;
+  
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap; /* Text wrap nahi hoga */
+}
+
+.reset-btn:hover {
+  background: #4077be;
+  color: #ffffff;
+  transform: none; /* Bounce effect hata diya professional look ke liye */
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .filter-card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .reset-btn {
+    grid-column: span 2; /* Mobile me full width */
+  }
+}
+
+
+/* Click Effect */
+.reset-btn:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 6px rgba(239, 68, 68, 0.3);
+}
+
+
+/* Focus (Accessibility) */
+.reset-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.3);
+}
+
+
+/* EMPTY STATE */
+.empty {
+  text-align: center;
+  color: #64748b;
+  padding: 20px;
+  font-weight: 500;
+}
+
+
+/* FILTER IMPROVEMENTS */
+.filter-card select {
+  background: #f8fafc;
+  cursor: pointer;
+}
+
+.filter-card select:hover {
+  border-color: #2563eb;
+}
+
+
+/* HEADER IMPROVE */
+.classes-header h1 {
+  color: #1e293b;
+}
+
+.classes-header p {
+  font-size: 14px;
+}
+
+
+/* TABLE IMPROVE */
+.table th {
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  font-size: 12px;
+}
+
+.table td {
+  vertical-align: middle;
+}

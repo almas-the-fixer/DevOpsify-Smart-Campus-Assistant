@@ -1,0 +1,147 @@
+.student-page {
+  background: var(--bg);
+}
+
+/* Welcome */
+.student-welcome {
+  background: var(--primary);
+  color: white;
+  padding: 28px;
+  border-radius: 18px;
+  margin-bottom: 28px;
+}
+
+.student-welcome p {
+  opacity: 0.9;
+}
+
+.student-welcome h2 {
+  margin: 6px 0;
+}
+
+/* Quick Actions */
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.quick-card {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  text-align: center;
+  font-weight: 500;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  cursor: pointer;
+}
+
+/* Info Cards */
+.info-card {
+  background: white;
+  padding: 22px;
+  border-radius: 16px;
+  margin-bottom: 18px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.12);
+}
+
+.info-card h4 {
+  margin-bottom: 6px;
+}
+
+.info-card p {
+  color: var(--muted);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .quick-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .quick-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Info Cards Grid */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 768px) {
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.student-welcome {
+  background: linear-gradient(135deg, var(--primary), #1e3a8a);
+  color: white;
+  padding: 32px;
+  border-radius: 20px;
+  margin-bottom: 32px;
+}
+
+.welcome-label {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.welcome-name {
+  margin: 6px 0;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.welcome-org {
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+
+
+.result-table {
+  width: 100%;
+  background: white;
+  align-items: center;
+  text-align: center;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+}
+
+.result-table th,
+.result-table td {
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.grade-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.grade-good {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.grade-warn {
+  background: #fef3c7;
+  color: #92400e;
+}

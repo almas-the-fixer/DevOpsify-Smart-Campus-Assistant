@@ -1,0 +1,54 @@
+.edit-profile-page {
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 0 16px;
+}
+
+.edit-card {
+  background: #fff;
+  padding: 28px;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+}
+
+.edit-card label {
+  font-weight: 600;
+  margin-top: 10px;
+  display: block;
+}
+
+.edit-card input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0 16px;
+  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+}
+
+.edit-card input.disabled {
+  background: #f1f5f9;
+  cursor: not-allowed;
+}
+
+.password-rules {
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.password-rules li.ok {
+  color: green;
+}
+
+.password-rules li.bad {
+  color: red;
+}
+
+button.primary {
+  width: 100%;
+  height: 56px;
+ background: var(--primary);
+  color: white;
+  border-radius: 16px;
+  font-weight: 600;
+  border: none;
+}

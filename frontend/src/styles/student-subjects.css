@@ -1,0 +1,109 @@
+.student-subjects-page {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.subjects-header {
+  background: white;
+  padding: 22px 26px;
+  border-radius: 18px;
+  margin-bottom: 26px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.subjects-header p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Grid */
+.subjects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.subject-card {
+  background: white;
+  padding: 22px;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease;
+}
+
+.subject-card:hover {
+  transform: translateY(-4px);
+}
+
+.subject-card h4 {
+  margin-bottom: 6px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.subject-card span {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.subject-card p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--primary);
+  font-weight: 500;
+}
+
+/* Skeleton */
+
+.subject-skeleton {
+  height: 130px;
+  border-radius: 18px;
+  background: linear-gradient(
+    90deg,
+    #eee 25%,
+    #ddd 37%,
+    #eee 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+
+/* Disabled Card */
+
+.subject-card.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.subject-card.disabled:hover {
+  transform: none;
+}
+
+
+/* Badge */
+
+.badge {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge.success {
+  background: #e7f9ef;
+  color: #16a34a;
+}
+
+.badge.danger {
+  background: #fee2e2;
+  color: #dc2626;
+}

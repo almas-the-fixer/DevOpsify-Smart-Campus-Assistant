@@ -1,0 +1,57 @@
+.log-card {
+  background: var(--card);
+  padding: 18px;
+  border-radius: var(--radius);
+  margin-bottom: 16px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.log-card h4 {
+  margin-bottom: 6px;
+}
+
+.log-card p {
+  margin: 4px 0;
+}
+
+.log-card span {
+  color: var(--muted);
+  font-size: 14px;
+}
+.logs-page {
+  max-width: 900px;
+  margin: auto;
+}
+
+.logs-page h2 {
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* CARD */
+
+.log-card {
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  margin-bottom: 16px;
+  border-left: 4px solid #2563eb;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+}
+
+.log-card h4 {
+  color: #1e40af;
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.log-card p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+.log-card span {
+  color: #64748b;
+  font-size: 13px;
+}

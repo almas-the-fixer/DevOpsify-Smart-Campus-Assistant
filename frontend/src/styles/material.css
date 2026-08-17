@@ -1,0 +1,468 @@
+/* =========================
+   PAGE
+========================= */
+
+.material-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc, #eef2ff);
+  padding-bottom: 60px;
+}
+
+
+/* =========================
+   HEADER + SEARCH
+========================= */
+
+.material-header {
+  max-width: 1200px;
+  margin: auto;
+  padding: 30px 20px 10px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.material-header h2 {
+  font-size: 26px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.material-search {
+  width: 260px;
+  padding: 10px 14px;
+
+  border-radius: 10px;
+  border: 1px solid #c7d2fe;
+
+  font-size: 14px;
+  outline: none;
+}
+
+.material-search:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+}
+
+
+/* =========================
+   GRID
+========================= */
+
+.material-list {
+  max-width: 1200px;
+  margin: auto;
+
+  padding: 30px 20px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 26px;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.material-item {
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(6px);
+
+  padding: 22px;
+
+  border-radius: 18px;
+
+  border: 1px solid #e2e8f0;
+
+  box-shadow: 0 8px 26px rgba(0,0,0,0.06);
+
+  transition: all 0.3s ease;
+
+  animation: fadeUp 0.4s ease both;
+}
+
+.material-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+  border-color: #c7d2fe;
+}
+
+
+/* =========================
+   CARD HEADER
+========================= */
+
+.material-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.material-head h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+  line-height: 1.4;
+}
+
+.material-tag {
+  background: #e0e7ff;
+  color: #3730a3;
+
+  padding: 4px 10px;
+  border-radius: 20px;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+
+/* =========================
+   SUBJECT
+========================= */
+
+.material-subject {
+  display: inline-block;
+
+  margin: 8px 0 14px;
+
+  background: #eef2ff;
+  color: #3730a3;
+
+  padding: 3px 10px;
+
+  border-radius: 20px;
+
+  font-size: 12px;
+  font-weight: 500;
+}
+
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.material-desc {
+  font-size: 13px;
+  color: #475569;
+  margin-bottom: 10px;
+}
+
+
+/* =========================
+   FILE
+========================= */
+
+.material-file {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: #f8fafc;
+
+  padding: 6px 10px;
+
+  border-radius: 8px;
+
+  font-size: 12px;
+  color: #64748b;
+
+  margin-bottom: 14px;
+}
+
+
+/* =========================
+   ACTIONS
+========================= */
+
+.material-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.material-actions a,
+.material-actions button {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #f8fafc;
+
+  border: none;
+  border-radius: 8px;
+
+  padding: 6px 8px;
+
+  font-size: 14px;
+  cursor: pointer;
+
+  box-shadow: inset 0 0 0 1px #e2e8f0;
+
+  transition: 0.2s;
+}
+
+.material-actions a:hover,
+.material-actions button:hover {
+  background: #eef2ff;
+  box-shadow: inset 0 0 0 1px #c7d2fe;
+}
+
+.material-actions .danger:hover {
+  background: #fee2e2;
+  box-shadow: inset 0 0 0 1px #f87171;
+}
+
+
+/* =========================
+   EDIT
+========================= */
+
+.edit-input,
+.edit-textarea {
+  width: 100%;
+
+  padding: 6px 8px;
+
+  border: 1px solid #c7d2fe;
+  border-radius: 6px;
+
+  font-size: 13px;
+}
+
+.edit-textarea {
+  resize: none;
+  height: 60px;
+}
+
+
+/* =========================
+   SAVE
+========================= */
+
+.save-btn {
+  background: #16a34a;
+  color: white;
+
+  border: none;
+
+  padding: 4px 12px;
+
+  border-radius: 6px;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  box-shadow: 0 4px 14px rgba(22,163,74,0.35);
+}
+
+.save-btn:hover {
+  background: #15803d;
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+.page-msg {
+  text-align: center;
+  margin: 40px;
+
+  color: #64748b;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+
+/* =========================
+   PREVIEW MODAL
+========================= */
+
+.preview-modal {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0,0,0,0.6);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 999;
+}
+
+.preview-box {
+  width: 90%;
+  max-width: 900px;
+  height: 85%;
+
+  background: white;
+
+  border-radius: 16px;
+  overflow: hidden;
+
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.preview-head {
+  padding: 12px 18px;
+
+  background: #1e40af;
+  color: white;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 14px;
+}
+
+.preview-head button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.preview-body {
+  flex: 1;
+}
+
+.preview-body iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+
+  .material-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .material-search {
+    width: 100%;
+  }
+
+}
+/* Edit File Input */
+
+.edit-file {
+  width: 100%;
+  margin: 8px 0 12px;
+
+  padding: 6px;
+
+  font-size: 12px;
+
+  border-radius: 6px;
+  border: 1px solid #c7d2fe;
+
+  background: #f8fafc;
+}
+/* EDIT MODE BOX */
+
+.edit-file-box {
+  background: #f1f5ff;
+  padding: 10px;
+
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.old-file {
+  font-size: 12px;
+  color: #1e40af;
+  margin-bottom: 6px;
+}
+
+
+/* SAVE BUTTON BIG */
+
+.save-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  padding: 6px 14px;
+  font-size: 13px;
+}
+
+
+/* ACTION ALIGN */
+
+.material-actions {
+  justify-content: flex-end;
+}
+
+/* FIX SAVE BUTTON VISIBILITY */
+
+.material-actions .save-btn {
+  background: linear-gradient(135deg, #16a34a, #15803d) !important;
+  color: #fff !important;
+
+  padding: 8px 16px !important;
+  font-size: 15px !important;
+  font-weight: 600;
+  margin: auto;
+  border-radius: 8px;
+
+  box-shadow: 0 6px 16px rgba(22,163,74,0.4);
+
+  min-width: 90px;
+
+  justify-content: center;
+}
+
+.material-actions .save-btn:hover {
+  background: linear-gradient(135deg, #15803d, #166534) !important;
+  transform: translateY(-1px);
+}
+
+
+/* FIX ACTION ALIGNMENT */
+
+.material-actions {
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.material-actions .danger {
+  background: #fee2e2 !important;
+  color: #b91c1c;
+
+  padding: 8px 14px;
+  font-weight: 600;
+}

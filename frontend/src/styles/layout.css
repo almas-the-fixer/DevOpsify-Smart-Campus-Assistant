@@ -1,0 +1,85 @@
+/* MAIN LAYOUT */
+
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+/* CONTENT AREA */
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* TOP HEADER */
+
+.admin-header {
+  height: 64px;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+
+  padding: 0 24px;
+
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+/* PAGE TITLE */
+
+.admin-title {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* PAGE WRAPPER */
+
+.page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 24px auto;
+  padding: 0 24px 32px;
+  box-sizing: border-box;
+}
+
+
+
+
+.topbar {
+  height: 60px;
+  background: white;
+  font-size: larger;
+  display: flex;
+  align-items: center;    
+  justify-content: center;
+}
+
+
+
+
+/* Breadcrumb Area */
+.breadcrumbs {
+  grid-column: 1;
+}
+
+
+/* CONTENT SHIFT WITH SIDEBAR */
+
+.content {
+  margin-left: 330px;
+  transition: all 0.75s ease;
+}
+
+/* When sidebar collapsed */
+.content.collapsed {
+  margin-left: 80px;
+}
