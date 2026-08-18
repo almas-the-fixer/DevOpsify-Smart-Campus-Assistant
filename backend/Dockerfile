@@ -10,6 +10,7 @@ COPY . .
 # Stage 2: Final lightweight runtime environment
 FROM node:22-alpine AS runner
 WORKDIR /app
+RUN npm install -g npm@latest
 ENV NODE_ENV=production
 
 # Copy dependencies and package files
