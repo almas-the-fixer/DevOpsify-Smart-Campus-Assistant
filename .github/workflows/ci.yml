@@ -8,7 +8,7 @@ env:
   FE_IMAGE_NAME: ${{ github.repository }}-frontend
   BE_IMAGE_NAME: ${{ github.repository }}-backend
 jobs:
-    Explore-GitHub-Actions:
+    CI-Pipeline:
         runs-on: ubuntu-latest
 
         permissions:
