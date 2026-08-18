@@ -4,7 +4,11 @@
 - Original Repo: https://github.com/harshrajsinhvaghela7586/Smart-Campus-Assistant-MERN.
 - This repository contains the complete DevOps, containerization, and CI/CD implementation by Me (Almas Bhisti).
 
-> I thank Harshrajsinh Again for letting me Work on top of his Work!!
+> I thank Harshrajsinh Again for letting me Work on top of his Project!!
+
+## Known Issues
+
+- During Trivy image scanning, three HIGH-severity CVEs remain in npm's own bundled internal dependencies (brace-expansion, ip-address) rather than in application code. These packages ship as part of the npm CLI itself and are used internally for npm's publish/provenance workflows, which this project's CI pipeline never invokes. They are tracked in .trivyignore with justification and will be re-evaluated as upstream npm releases patch them.
 
 # Smart Campus Assistant - MERN Stack
 

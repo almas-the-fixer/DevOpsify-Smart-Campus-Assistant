@@ -1,0 +1,6 @@
+# Bundled npm internal deps (tar/sigstore/ip-address/etc), not runtime code.
+# App never runs npm publish/pack in production — not exploitable here.
+# Re-check periodically for upstream fix.
+CVE-2026-14257
+CVE-2026-69152
+CVE-2026-69192
