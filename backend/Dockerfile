@@ -2,6 +2,7 @@ FROM node:22-alpine AS builder
 WORKDIR /app
 
 COPY package*.json ./
+RUN npm install -g npm@latest
 RUN npm ci --omit=dev
 
 COPY . .
