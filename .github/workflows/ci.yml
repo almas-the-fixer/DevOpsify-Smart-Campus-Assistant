@@ -1,5 +1,5 @@
 name: smart-campus-asssistant-ci
-run-name: ${{ github.actor }} is testing out Github Actions!!!
+run-name: CI Pipeline
 
 on: [push]
 
