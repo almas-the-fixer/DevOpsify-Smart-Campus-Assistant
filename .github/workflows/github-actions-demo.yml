@@ -2,16 +2,57 @@ name: github-actions-demo
 run-name: ${{ github.actor }} is testing out Github Actions!!!
 
 on: [push]
+
+env:
+  REGISTRY: ghcr.io
+  FE_IMAGE_NAME: ${{ github.repository }}-frontend
+  BE_IMAGE_NAME: ${{ github.repository }}-backend
 jobs:
     Explore-GitHub-Actions:
         runs-on: ubuntu-latest
+
+        permissions:
+          contents: read
+          packages: write
+          
         steps:
             - name: Check Out Repository Code
               uses: actions/checkout@v6
             - run: echo "The Repository ${{ github.repository }} has been Cloned to the runner!"
 
-            - name: Build The Docker Image
-              run: docker build -t smart-campus-backend:v1 -f ./backend/Dockerfile ./backend
+            - name: Login to GHCR
+              uses: docker/login-action@v4
+              with:
+                registry: ${{ env.REGISTRY }}
+                username: ${{ github.actor }}
+                password: ${{ secrets.GITHUB_TOKEN }}
+            
+            - name: Extract Metadata for Frontend Image
+              id: fe-metadata
+              uses: docker/metadata@v6
+              with:
+                images: ${{ env.REGISTRY }}/${{ env.FE_IMAGE_NAME }} # Ahh so it will be my ghcr.io/my repo name ??
 
-            - name: Build The Frontend Docker Image
-              run: docker build -t smart-campus-frontend:v1 -f ./frontend/Dockerfile ./frontend
+            - name: Build and Push Docker Frontend Image
+              id: frontend-push
+              uses: docker/build-push-action@v4
+              with:
+                context: ./frontend
+                push: true
+                tags: ${{ steps.fe-metadata.outputs.tags }}
+                labels: ${{ steps.fe-metadata.outputs.labels }}
+
+            - name: Extract Metadata for Backend Image
+              id: be-meta
+              uses: docker/metadata@v6
+              with:
+                images: ${{ env.REGISTRY }}/${{ env.BE_IMAGE_NAME }} # Ahh so it will be my ghcr.io/my repo name ??
+
+            - name: Build and Push Docker Backend Image
+              id: backend-push
+              uses: docker/build-push-action@v4
+              with:
+                context: ./backend
+                push: true
+                tags: ${{ steps.be-meta.outputs.tags }}
+                labels: ${{ steps.be-meta.outputs.labels }}
