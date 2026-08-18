@@ -6,7 +6,12 @@ jobs:
     Explore-GitHub-Actions:
         runs-on: ubuntu-latest
         steps:
-            - run: echo "Hello World From github actions.."
-            - run: echo "This Job Was triggered by ${{ github.event_name }} event!!!"
-            - run: echo "This Job is Running on ${{ runner.os }} Server on GitHub!!!"
-            - run: echo "The name of the branch is ${{ github.ref }} and the repository is ${{ github.repository }} !!!"
+            - name: Check Out Repository Code
+              uses: actions/checkout@v6
+            - run: echo "The Repository ${{ github.repository }} has been Cloned to the runner!"
+
+            - name: Build The Docker Image
+              run: docker build -t smart-campus-backend:v1 -f ./backend/Dockerfile ./backend
+
+            - name: Build The Frontend Docker Image
+              run: docker build -t smart-campus-frontend:v1 -f ./frontend/Dockerfile ./frontend
