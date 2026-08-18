@@ -24,7 +24,7 @@ services:
       - NODE_ENV=production
       - PORT=5000
       - MONGO_URI=${MONGO_URI}
-      - JWT_SECRET=jwtsecret_123!@
+      - JWT_SECRET=${JWT_SECRET}
       - CLOUD_NAME=${CLOUD_NAME}
       - CLOUD_KEY=${CLOUD_KEY}
       - CLOUD_SECRET=${CLOUD_SECRET}

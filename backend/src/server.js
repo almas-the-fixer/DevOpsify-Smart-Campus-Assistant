@@ -28,7 +28,7 @@ import announcementRoutes from "./routes/adminRoutes/announcement.Routes.js";
 import discussionRoutes from "./routes/teacherRoutes/discussion.Routes.js";
 
 
-dotenv.config();
+dotenv.config({path: "../.env" });
 connectDB();
 
 const adminEmail = 'admin@campus.com';
