@@ -1,0 +1,9 @@
+# util-linux/libuuid CVEs — mount/nsenter privilege-escalation issues,
+# irrelevant to a static-file-serving nginx container with no mount usage.
+CVE-2026-53612
+CVE-2026-53613
+CVE-2026-53614
+CVE-2026-76642
+CVE-2026-78408
+CVE-2026-78409
+CVE-2026-78410
