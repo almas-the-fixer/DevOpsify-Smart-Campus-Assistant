@@ -78,3 +78,6 @@ Smart-Campus-Assistant.pptx
 *.csv
 demo-data/
 private-data/
+
+# K8s Secrets
+secrets.yml
