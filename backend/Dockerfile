@@ -11,6 +11,7 @@ COPY . .
 FROM node:22-alpine AS runner
 WORKDIR /app
 RUN npm install -g npm@latest
+RUN apk update && apk upgrade --no-cache
 ENV NODE_ENV=production
 
 # Copy dependencies and package files
