@@ -9,6 +9,9 @@ COPY . .
 RUN npm run build
 
 FROM nginx:alpine AS runner
+# fix vulnerabilities by upgrading packages
+RUN apk update && apk upgrade --no-cache
+
 # custom nginx config
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
