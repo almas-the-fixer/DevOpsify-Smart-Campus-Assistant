@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smart-campus-backend
+  labels:
+    app: sc-backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sc-backend
+  template:
+    metadata:
+      labels:
+        app: sc-backend
+    spec:
+      containers:
+        - name: smart-campus-backend-container
+          image: ghcr.io/almas-the-fixer/devopsify-smart-campus-assistant-backend:main
+          ports:
+            - containerPort: 5000
+          envFrom:
+            - configMapRef:
+                name: smart-campus-configmap
+            - secretRef:
+                name: smart-campus-secret
