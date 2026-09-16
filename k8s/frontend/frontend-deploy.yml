@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smart-campus-frontend
+  labels:
+    app: sc-frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sc-frontend
+  template:
+    metadata:
+      labels:
+        app: sc-frontend
+    spec:
+      containers:
+        - name: smart-campus-frontend-container
+          image: ghcr.io/almas-the-fixer/devopsify-smart-campus-assistant-frontend:main
+          ports:
+            - containerPort: 80
