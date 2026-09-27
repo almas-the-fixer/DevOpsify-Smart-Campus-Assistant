@@ -54,6 +54,9 @@ jobs:
               uses: docker/metadata-action@v6
               with:
                 images: ${{ env.REGISTRY }}/${{ env.FE_IMAGE_NAME }} # Ahh so it will be my ghcr.io/my repo name ??
+                tags: |
+                  type=sha
+                  type=ref,event=branch
 
           # Finally Push to ghcr.io
             - name: Push Frontend Image to ghcr.io
@@ -90,6 +93,9 @@ jobs:
               uses: docker/metadata-action@v6
               with:
                 images: ${{ env.REGISTRY }}/${{ env.BE_IMAGE_NAME }} # Ahh so it will be my ghcr.io/my repo name ??
+                tags: |
+                  type=sha
+                  type=ref,event=branch
 
           # Finally Push to ghcr.io
             - name: Push Backend Image to ghcr.io
