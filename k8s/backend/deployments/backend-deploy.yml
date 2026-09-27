@@ -18,6 +18,7 @@ spec:
       containers:
         - name: smart-campus-backend-container
           image: ghcr.io/almas-the-fixer/devopsify-smart-campus-assistant-backend:main
+          imagePullPolicy: Always
           ports:
             - containerPort: 5000
           envFrom:
