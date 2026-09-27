@@ -1,6 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
+  namespace: sc-namespace
   name: smart-campus-be-service
 spec:
   type: ClusterIP
