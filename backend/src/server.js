@@ -41,32 +41,44 @@ const seedAdmin = async () => {
     await mongoose.connect(mongoURI);
     console.log('✅ MongoDB Connected for Seeding...');
 
+    // Enforce the unique index in the database automatically on startup
+    await User.collection.createIndex({ email: 1 }, { unique: true });
+
     let admin = await User.findOne({ email: adminEmail });
 
     if (admin) {
       console.log(`⚠️ Admin user already exists: ${admin.email}`);
-      return; // <--- ADD THIS RIGHT HERE!
+      return; 
     }
 
     // Hash the password
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(adminPassword, salt);
 
-    // Create the Admin User
-    admin = await User.create({
-      name: 'Super Admin',
-      email: adminEmail,
-      password: hashedPassword,
-      role: 'admin' 
-    });
+    // Create the Admin User with a safety catch for replica race conditions
+    try {
+      admin = await User.create({
+        name: 'Super Admin',
+        email: adminEmail,
+        password: hashedPassword,
+        role: 'admin' 
+      });
 
-    console.log('🚀 Admin user created successfully!');
-    console.log(`📧 Email: ${adminEmail}`);
-    console.log(`🔑 Password: ${adminPassword}`);
+      console.log('🚀 Admin user created successfully!');
+      console.log(`📧 Email: ${adminEmail}`);
+      console.log(`🔑 Password: ${adminPassword}`);
+    } catch (dbError) {
+      // 11000 is MongoDB's native error code for unique constraint violations
+      if (dbError.code === 11000) {
+        console.log('💡 Admin already seeded by a concurrent replica pod. Skipping safely...');
+      } else {
+        throw dbError; // Pass any other unexpected database error up to the main catch block
+      }
+    }
 
   } catch (error) {
     console.error('❌ Error seeding admin:', error);
-    // Don't exit here either, let the server try to start anyway!
+    // Don't exit here, let the server try to start anyway!
   }
 };
 
