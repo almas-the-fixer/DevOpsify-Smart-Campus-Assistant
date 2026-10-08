@@ -81,3 +81,10 @@ private-data/
 
 # K8s Secrets
 secrets.yml
+
+# Terraform Stuff
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+*.tfvars
