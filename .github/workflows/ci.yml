@@ -85,6 +85,7 @@ jobs:
                 image-ref: local/backend:scan
                 severity: HIGH,CRITICAL
                 exit-code: '1'
+                args: --clear-cache
                 trivyignores: ./backend/.trivyignore
 
           # Extract Metadata for BE
