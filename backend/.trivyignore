@@ -5,3 +5,13 @@ CVE-2026-14257
 CVE-2026-69152
 CVE-2026-69192
 CVE-2026-73566
+
+# Ignore persistent brace-expansion issues
+CVE-2026-102276
+CVE-2026-102278
+
+# Ignore http-cache-semantics (no upstream fix available)
+CVE-2026-93748
+
+# Ignore undici WebSocket crash vulnerability
+CVE-2026-19534
