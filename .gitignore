@@ -88,3 +88,12 @@ secrets.yml
 *.tfstate.*
 crash.log
 *.tfvars
+
+# Ignore plan files
+tfplan
+*.tfplan
+*.plan
+plan.out
+
+# Ignore real Inventory
+infra/ansible/inventory/hosts.ini
