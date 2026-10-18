@@ -6,6 +6,39 @@
 
 > I thank Harshrajsinh Again for letting me Work on top of his Project!!
 
+## DevOps Implementation
+
+This repository extends an existing MERN-stack Smart Campus application with containerization, CI/CD, infrastructure as code, configuration management, and Kubernetes deployment.
+
+### DevOps Toolchain
+
+| Area | Tools |
+|---|---|
+| Application | React, Node.js, Express, MongoDB |
+| Containerization | Docker, Docker Compose |
+| CI/CD | GitHub Actions |
+| Image Registry | GitHub Container Registry (GHCR) |
+| Image Security | Trivy |
+| Infrastructure as Code | Terraform, Azure |
+| Configuration Management | Ansible |
+| Container Orchestration | Kubernetes, k3s |
+
+### Deployment Workflow
+
+1. Changes are pushed to GitHub.
+2. GitHub Actions builds and scans container images.
+3. Images are published to GHCR.
+4. Terraform provisions the Azure infrastructure.
+5. Ansible configures the VM and prepares the Kubernetes environment.
+6. Kubernetes manifests deploy the application workloads.
+7. Deployment health and application functionality are verified.
+
+**Deployment status:** The local Docker Compose and k3s environments have been tested. The automated Azure VM configuration and deployment workflow is still in progress.
+
+### Infrastructure Documentation
+
+See [`infra/README.md`](infra/README.md) for the infrastructure architecture, provisioning workflow, configuration management, and cleanup instructions.
+
 ## Known Issues
 
 - During Trivy image scanning, three HIGH-severity CVEs remain in npm's own bundled internal dependencies (brace-expansion, ip-address) rather than in application code. These packages ship as part of the npm CLI itself and are used internally for npm's publish/provenance workflows, which this project's CI pipeline never invokes. They are tracked in .trivyignore with justification and will be re-evaluated as upstream npm releases patch them.
