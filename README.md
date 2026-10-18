@@ -33,7 +33,20 @@ This repository extends an existing MERN-stack Smart Campus application with con
 6. Kubernetes manifests deploy the application workloads.
 7. Deployment health and application functionality are verified.
 
-**Deployment status:** The local Docker Compose and k3s environments have been tested. The automated Azure VM configuration and deployment workflow is still in progress.
+**Deployment status**: Docker Compose and local k3s environments have been tested. Terraform successfully provisions the Azure infrastructure, and Ansible provisions the VM and configures a single-node k3s cluster. Kubernetes application deployment to the Azure environment is the remaining deployment step.
+
+## Infrastructure Summary
+
+The application can be deployed to a temporary Azure environment using:
+
+- **Terraform** — provisions Azure networking and the Linux VM.
+- **Ansible** — bootstraps the VM and installs/configures k3s.
+- **k3s** — provides the single-node Kubernetes environment.
+- **Kubernetes manifests** — deploy the application workloads.
+
+The infrastructure workflow is documented in [`infra/README.md`](infra/README.md).
+
+The Azure environment is intended for temporary demonstrations and is destroyed after collecting deployment evidence to avoid unnecessary cloud costs.
 
 ### Infrastructure Documentation
 
@@ -245,37 +258,20 @@ This project was originally created as an academic project and has been prepared
 
 ## Project Structure
 
-    Smart-Campus-Assistant-MERN/
-    |
-    |-- frontend/
-    |   |-- src/
-    |   |   |-- components/
-    |   |   |-- pages/
-    |   |   |-- services/
-    |   |   |-- context/
-    |   |   |-- assets/
-    |   |   `-- App.jsx
-    |   |
-    |   |-- public/
-    |   |-- package.json
-    |   `-- vite.config.js
-    |
-    |-- backend/
-    |   |-- config/
-    |   |-- controllers/
-    |   |-- middleware/
-    |   |-- models/
-    |   |-- routes/
-    |   |-- services/
-    |   |-- utils/
-    |   |-- server.js
-    |   `-- package.json
-    |
-    |-- screenshots/
-    |-- .gitignore
-    |-- README.md
-    `-- package.json
-
+Smart-Campus-Assistant-MERN/
+    ├── frontend/
+    ├── backend/
+    ├── infra/
+    │   ├── terraform/
+    │   └── ansible/
+    ├── k8s/
+    ├── screenshots/
+    ├── .github/
+    │   └── workflows/
+    ├── docker-compose.yml
+    ├── Dockerfile...
+    ├── .gitignore
+    └── README.md
 ---
 
 ## Demo Credentials
