@@ -1,0 +1,20 @@
+---
+- name: Bootstrap VM with Essential Utilities
+  hosts: smart_campus_app_vm
+  become: true
+  tasks:
+    
+    - name: Update Package Cache
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
+    
+    - name: Install curl Utility
+      ansible.builtin.apt:
+        name: curl
+        state: present
+
+    - name: Install Git
+      ansible.builtin.apt:
+        name: git
+        state: present
