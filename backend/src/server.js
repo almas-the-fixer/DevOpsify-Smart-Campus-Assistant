@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import User from './models/adminModels/User.js'; 
+import User from './models/adminModels/User.js';
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 
@@ -28,7 +28,7 @@ import announcementRoutes from "./routes/adminRoutes/announcement.Routes.js";
 import discussionRoutes from "./routes/teacherRoutes/discussion.Routes.js";
 
 
-dotenv.config({path: "../.env" });
+dotenv.config({ path: "../.env" });
 connectDB();
 
 const adminEmail = 'admin@campus.com';
@@ -48,7 +48,7 @@ const seedAdmin = async () => {
 
     if (admin) {
       console.log(`⚠️ Admin user already exists: ${admin.email}`);
-      return; 
+      return;
     }
 
     // Hash the password
@@ -61,7 +61,7 @@ const seedAdmin = async () => {
         name: 'Super Admin',
         email: adminEmail,
         password: hashedPassword,
-        role: 'admin' 
+        role: 'admin'
       });
 
       console.log('🚀 Admin user created successfully!');
