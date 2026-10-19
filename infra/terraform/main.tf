@@ -66,6 +66,18 @@ resource "azurerm_network_security_group" "smart_campus_network_security_group" 
     destination_port_range     = "22"
     source_address_prefix      = "103.240.169.208/32" # Get Your Public IP and Put it Here so that ONLY YOU can SSH into the VM created but Beware it changes frequently in prod we use VPN or a Bastion Host... But Overkill for this project...
     destination_address_prefix = "*"
+  } 
+
+  security_rule {
+    name                       = "allow-http-traffic" # To Check if the App is Reachable from the internet!
+    priority                   = 110
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "80"
+    source_address_prefix      = "0.0.0.0/0" # Access from anywhere
+    destination_address_prefix = "*"
   }
 
   tags = {
