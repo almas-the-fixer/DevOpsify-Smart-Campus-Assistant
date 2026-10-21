@@ -8,3 +8,4 @@ metadata:
 data:
   PORT: "5000"
   CLOUD_NAME: "dvsmyjy3"
+  FRONTEND_URL: ""  # FRONTEND Doesnt have a Domain Name yet so we need to juggle azure given public IPs each time we recreate the env... So we will inject the newly allocated public IP each time we recreate the INFRA... Painful but that's how we learn lol...
