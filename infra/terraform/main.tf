@@ -11,6 +11,12 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "=5.0.0"
     }
+
+    # This is to Create and Populate Inventory Dynamically!!
+    local = {
+      source  = "hashicorp/local"
+      version = "~> 2.5"
+    }
   }
 }
 
@@ -44,7 +50,7 @@ resource "azurerm_public_ip" "sc_public_ip" {
   }
 }
 
-# Network Interface Securrity Group Association
+# Network Interface Security Group Association
 resource "azurerm_network_interface_security_group_association" "sc_net_sec_grp_association" {
   network_interface_id      = azurerm_network_interface.sc_nic.id
   network_security_group_id = azurerm_network_security_group.smart_campus_network_security_group.id
@@ -64,9 +70,9 @@ resource "azurerm_network_security_group" "smart_campus_network_security_group" 
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "22"
-    source_address_prefix      = "103.240.169.208/32" # Get Your Public IP and Put it Here so that ONLY YOU can SSH into the VM created but Beware it changes frequently in prod we use VPN or a Bastion Host... But Overkill for this project...
+    source_address_prefix      = "103.240.204.72/32" # Get Your Public IP and Put it Here so that ONLY YOU can SSH into the VM created but Beware it changes frequently in prod we use VPN or a Bastion Host... But Overkill for this project...
     destination_address_prefix = "*"
-  } 
+  }
 
   security_rule {
     name                       = "allow-http-traffic" # To Check if the App is Reachable from the internet!
@@ -142,4 +148,13 @@ resource "azurerm_linux_virtual_machine" "smart_campus_vm" {
     sku       = "22_04-lts"
     version   = "latest"
   }
+}
+
+# This is to Dynamically Populate the Ansible Inventory with the Outputted VM IP by Terraform
+resource "local_file" "ansible_inventory" {
+  filename = "${path.module}/../ansible/inventory/hosts.ini"
+
+  content = templatefile("${path.module}/ansible_hosts.tpl", {
+    public_ip = azurerm_public_ip.sc_public_ip.ip_address
+  })
 }
