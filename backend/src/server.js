@@ -92,6 +92,7 @@ const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost",
   "https://smart-campus-assistant-eight.vercel.app",
+  process.env.FRONTEND_URL,
 ];
 
 app.use(cors({
