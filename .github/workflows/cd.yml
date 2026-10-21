@@ -1,0 +1,74 @@
+name: Smart Campus CD
+run-name: CD Pipeline
+
+on:
+  workflow_run:
+    workflows: ["smart-campus-asssistant-ci"]
+    types: [completed]
+    branches: [main]
+
+jobs:
+  deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Azure Login with OIDC
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Get VM Public IP
+        id: vm
+        run: |
+          VM_IP=$(az vm show \
+            --resource-group smart-campus-resource-group \
+            --name sc-linux-machine \
+            --show-details \
+            --query publicIps \
+            --output tsv)
+
+          echo "VM_IP=$VM_IP" >> "$GITHUB_OUTPUT"
+
+      - name: Deploy to K3s
+        env:
+          VM_IP: ${{ steps.vm.outputs.VM_IP }}
+          IMAGE_TAG: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          az vm run-command invoke \
+            --resource-group smart-campus-resource-group \
+            --name sc-linux-machine \
+            --command-id RunShellScript \
+            --scripts "
+              set -e
+
+              kubectl patch configmap smart-campus-configmap \
+                -n sc-namespace \
+                --type merge \
+                -p '{\"data\":{\"FRONTEND_URL\":\"http://${VM_IP}\"}}'
+
+              kubectl set image deployment/smart-campus-frontend \
+                smart-campus-frontend-container=ghcr.io/almas-the-fixer/devopsify-smart-campus-assistant-frontend:${IMAGE_TAG} \
+                -n sc-namespace
+
+              kubectl set image deployment/smart-campus-backend \
+                smart-campus-backend-container=ghcr.io/almas-the-fixer/devopsify-smart-campus-assistant-backend:${IMAGE_TAG} \
+                -n sc-namespace
+
+              kubectl rollout restart deployment/smart-campus-backend \
+                -n sc-namespace
+
+              kubectl rollout status deployment/smart-campus-frontend \
+                -n sc-namespace \
+                --timeout=180s
+
+              kubectl rollout status deployment/smart-campus-backend \
+                -n sc-namespace \
+                --timeout=180s
+            "
