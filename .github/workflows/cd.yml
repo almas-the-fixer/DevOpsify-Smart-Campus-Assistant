@@ -40,6 +40,19 @@ jobs:
         env:
           VM_IP: ${{ steps.vm.outputs.VM_IP }}
           IMAGE_TAG: ${{ github.event.workflow_run.head_sha }}
+
+          MONGO_URI: ${{ secrets.MONGO_URI }}
+          MONGO_USER: ${{ secrets.MONGO_USER }}
+          MONGO_PASS: ${{ secrets.MONGO_PASS }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          CLOUD_KEY: ${{ secrets.CLOUD_KEY }}
+          CLOUD_SECRET: ${{ secrets.CLOUD_SECRET }}
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}
+          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+          TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
+          TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
+          TWILIO_PHONE: ${{ secrets.TWILIO_PHONE }}
+
         run: |
           az vm run-command invoke \
             --resource-group smart-campus-resource-group \
@@ -48,27 +61,88 @@ jobs:
             --scripts "
               set -e
 
+              echo 'Updating application repository...'
+
+              if [ ! -d /opt/smart-campus/.git ]; then
+                git clone https://github.com/almas-the-fixer/DevOpsify-Smart-Campus-Assistant.git /opt/smart-campus
+              fi
+
+              git -C /opt/smart-campus fetch origin main
+              git -C /opt/smart-campus reset --hard origin/main
+
+              echo 'Creating namespace...'
+
+              kubectl apply -f /opt/smart-campus/k8s/namespace.yml
+
+              echo 'Creating application secret...'
+
+              kubectl create secret generic smart-campus-secret \
+                -n sc-namespace \
+                --from-literal=MONGO_URI=\"\$1\" \
+                --from-literal=MONGO_USER=\"\$2\" \
+                --from-literal=MONGO_PASS=\"\$3\" \
+                --from-literal=JWT_SECRET=\"\$4\" \
+                --from-literal=CLOUD_KEY=\"\$5\" \
+                --from-literal=CLOUD_SECRET=\"\$6\" \
+                --from-literal=EMAIL_USER=\"\$7\" \
+                --from-literal=EMAIL_PASS=\"\$8\" \
+                --from-literal=TWILIO_ACCOUNT_SID=\"\$9\" \
+                --from-literal=TWILIO_AUTH_TOKEN=\"\${10}\" \
+                --from-literal=TWILIO_PHONE=\"\${11}\" \
+                --dry-run=client \
+                -o yaml | kubectl apply -f -
+
+              echo 'Applying Kubernetes manifests...'
+
+              kubectl apply -f /opt/smart-campus/k8s/ -R
+
+              echo 'Updating frontend URL...'
+
               kubectl patch configmap smart-campus-configmap \
                 -n sc-namespace \
                 --type merge \
                 -p '{\"data\":{\"FRONTEND_URL\":\"http://${VM_IP}\"}}'
 
+              echo 'Updating frontend image...'
+
               kubectl set image deployment/smart-campus-frontend \
                 smart-campus-frontend-container=ghcr.io/almas-the-fixer/devopsify-smart-campus-assistant-frontend:${IMAGE_TAG} \
                 -n sc-namespace
+
+              echo 'Updating backend image...'
 
               kubectl set image deployment/smart-campus-backend \
                 smart-campus-backend-container=ghcr.io/almas-the-fixer/devopsify-smart-campus-assistant-backend:${IMAGE_TAG} \
                 -n sc-namespace
 
+              echo 'Restarting backend...'
+
               kubectl rollout restart deployment/smart-campus-backend \
                 -n sc-namespace
+
+              echo 'Waiting for frontend rollout...'
 
               kubectl rollout status deployment/smart-campus-frontend \
                 -n sc-namespace \
                 --timeout=180s
 
+              echo 'Waiting for backend rollout...'
+
               kubectl rollout status deployment/smart-campus-backend \
                 -n sc-namespace \
                 --timeout=180s
-            "
+
+              echo 'Deployment successful.'
+            " \
+            --parameters \
+              "$MONGO_URI" \
+              "$MONGO_USER" \
+              "$MONGO_PASS" \
+              "$JWT_SECRET" \
+              "$CLOUD_KEY" \
+              "$CLOUD_SECRET" \
+              "$EMAIL_USER" \
+              "$EMAIL_PASS" \
+              "$TWILIO_ACCOUNT_SID" \
+              "$TWILIO_AUTH_TOKEN" \
+              "$TWILIO_PHONE"
